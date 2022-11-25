@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
+import BottomHalf from "../BottomHalfContainer/BottomHalf";
 import "./App.css";
 
 function App() {
@@ -31,11 +32,22 @@ function App() {
 
   const [allMemes, setAllMemes] = useState<AllMemes>("");
 
+  //call fetch => parse to json => save parsedData to data => saveData allMemes state
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
       .then((data) => setAllMemes(data));
   }, []);
+
+  const onChange = (e: EventTarget | any) => {
+    const {name, value} = e.target
+    setMeme((prevMeme) => {
+      return {
+        ...prevMeme, 
+        [name]: value
+      }
+    })
+  }
 
   console.log(allMemes);
 
