@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import MemeButton from "../Button/Button";
+import Image from "../MemeImage/MemeImage";
 import "./App.css";
 
 function App() {
@@ -89,6 +90,11 @@ function App() {
           </div>
         </main>
         <MemeButton clickFunction={handleClick} />
+        <Image
+          meme={meme.memeImage}
+          topText={meme.topText}
+          bottomText={meme.bottomText}
+        />
       </div>
     </div>
   );
