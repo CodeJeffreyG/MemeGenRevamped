@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
-import BottomHalf from "../BottomHalfContainer/BottomHalf";
+import MemeButton from "../Button/Button";
 import "./App.css";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   }
 
   //memeImages from image flip url is just an array filled with 100 objects holding images.
+
   type AllMemes =
     | string
     | [
@@ -30,7 +31,7 @@ function App() {
     memeImage: "",
   });
 
-  const [allMemes, setAllMemes] = useState<AllMemes>("");
+  const [allMemes, setAllMemes] = useState<AllMemes | any>("");
 
   //call fetch => parse to json => save parsedData to data => saveData allMemes state
   useEffect(() => {
@@ -39,21 +40,56 @@ function App() {
       .then((data) => setAllMemes(data));
   }, []);
 
-  const onChange = (e: EventTarget | any) => {
-    const {name, value} = e.target
+  function handleClick() {
+    let memesArray = allMemes.data.memes;
+    let randomNumber = Math.floor(Math.random() * 100);
     setMeme((prevMeme) => {
       return {
-        ...prevMeme, 
-        [name]: value
-      }
-    })
+        topText: "",
+        bottomText: "",
+        memeImage: memesArray[randomNumber].url,
+      };
+    });
   }
+
+  const onChange = (e: EventTarget | any): void => {
+    const { name, value } = e.target;
+    setMeme((prevMeme) => {
+      return {
+        ...prevMeme,
+        [name]: value,
+      };
+    });
+  };
 
   console.log(allMemes);
 
   return (
     <div className="pageContainerOutterPage">
       <NavBar />
+      <div className="bottomHalfContainer">
+        <main className="memeContainer">
+          <div className="inputContainer">
+            <input
+              onChange={onChange}
+              value={meme.topText}
+              name="topText"
+              type="text"
+              placeholder="Top Text"
+            />
+          </div>
+          <div className="inputContainer">
+            <input
+              onChange={onChange}
+              value={meme.bottomText}
+              name="bottomText"
+              type="text"
+              placeholder="Bottom Text"
+            />
+          </div>
+        </main>
+        <MemeButton clickFunction={handleClick} />
+      </div>
     </div>
   );
 }

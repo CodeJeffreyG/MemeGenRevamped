@@ -3,3 +3,32 @@
   flex-direction: column;
   height: 100vh;
 }
+.bottomHalfContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 70px);
+}
+
+.memeContainer {
+  display: flex;
+  height: 15%;
+  width: 85%;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.inputContainer > input {
+  align-self: center;
+  width: 325px;
+  height: 32px;
+  border: 1px solid #d5d4d8;
+  border-radius: 5px;
+  text-indent: 5px;
+}

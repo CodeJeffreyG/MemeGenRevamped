@@ -1,0 +1,22 @@
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  width: 85%;
+  height: 15%;
+}
+
+.buttonContainer > button {
+  align-self: center;
+  font-size: 25px;
+  font-weight: 700px;
+  height: 64px;
+  width: 650px;
+  border-radius: 5px;
+  border: none;
+  background: #751e94;
+  color: white;
+}
+
+.buttonContainer > button:active {
+  background-color: #8424a6;
+}
