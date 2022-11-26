@@ -1,8 +1,7 @@
 .buttonContainer {
-  display: flex;
-  justify-content: center;
-  width: 85%;
-  height: 15%;
+  position: absolute;
+
+  bottom: 50px;
 }
 
 .buttonContainer > button {

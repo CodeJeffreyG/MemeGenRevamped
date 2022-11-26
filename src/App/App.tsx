@@ -35,6 +35,7 @@ function App() {
   const [allMemes, setAllMemes] = useState<AllMemes | any>("");
 
   //call fetch => parse to json => save parsedData to data => saveData allMemes state
+  
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
@@ -63,8 +64,6 @@ function App() {
     });
   };
 
-  console.log(allMemes);
-
   return (
     <div className="pageContainerOutterPage">
       <NavBar />
@@ -89,12 +88,12 @@ function App() {
             />
           </div>
         </main>
-        <MemeButton clickFunction={handleClick} />
         <Image
           meme={meme.memeImage}
           topText={meme.topText}
           bottomText={meme.bottomText}
         />
+        <MemeButton clickFunction={handleClick} />
       </div>
     </div>
   );
